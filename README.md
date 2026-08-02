@@ -1,49 +1,33 @@
-# BHFC Website — Stage 1.1
+# BHFC Website Preview — Stage 1.2
 
-A separate Render-ready staging website for Brunswick Heads Fish & Chippery.
+This is a direct replacement update for the existing `bhfc-website-stage1` GitHub repository.
 
 ## Included
 
-- Responsive video-led homepage
-- Mobile navigation
-- Live website menu proxied from the existing Menu Manager
-- Current Square prices and sold-out status
-- Signature dish media
-- Brunswick Heads drone section
-- Visit and directions section
-- Existing Square Online ordering remains separate
+- Exact supplied BHFC logo throughout
+- Brand colours:
+  - Navy `#003087`
+  - Aqua `#7CE0D3`
+  - Red `#E4002B`
+  - White `#FFFFFF`
+- Adobe Fonts kit already linked
+- Hobeaux, Cooper Black and Filson Pro styling
+- New fresh-prep video
+- New signature-dish video
+- Existing hero, burger and drone media
+- Responsive live menu connected to Menu Manager
+- Improved SOLD OUT treatment with no dots underneath
+- Mobile navigation and layouts
+- Flat repository structure compatible with the existing Render service
 
-## Deploy to Render
+## Update preview site
 
-1. Create a new GitHub repository, for example `bhfc-website-stage1`.
-2. Upload all extracted files from this ZIP.
-3. In Render choose **New → Web Service** and connect the repository.
-4. Use:
-   - Runtime: Node
-   - Build command: `npm install`
-   - Start command: `npm start`
-5. Add this optional environment variable:
-   - `MENU_API_URL=https://bhfc-digital-menu.onrender.com/api/menu`
-6. Deploy.
+Extract this ZIP and upload all files to the root of the existing GitHub repository:
 
-Render will issue a temporary URL such as:
+`BHFC2483/bhfc-website-stage1`
 
-`https://bhfc-website-stage1.onrender.com`
+Choose **Add file → Upload files**, replace existing files, and commit.
 
-## Before launch
+Render should redeploy automatically. If not:
 
-Update these details after confirmation:
-
-- Exact Square Online order URL in `public/app.js`
-- Phone number in `public/index.html`
-- Final trading hours
-- Final approved logo asset if a higher-resolution original is supplied
-
-The current Square website and domain remain untouched until the staging site is approved.
-
-
-## Stage 1.1 deployment fix
-
-This package uses a flat repository structure to match GitHub browser uploads. `index.html`, CSS, JavaScript, images and videos all sit at repository root. The Express server serves both `/` and `/assets/...` from that root.
-
-Replace the current repository files with all files from this ZIP, commit, and Render will auto-deploy.
+**Manual Deploy → Deploy latest commit**
