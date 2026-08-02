@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#003087">
+  <meta name="description" content="Fresh fish, burgers, tacos and chips in Brunswick Heads. View the live menu and order online.">
+  <title>Brunswick Heads Fish & Chippery</title>
+  <link rel="preconnect" href="https://use.typekit.net">
+  <link rel="stylesheet" href="https://use.typekit.net/rlp8byb.css">
+  <link rel="stylesheet" href="/styles.css?v=1.0.0">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a href="#top" class="brand" aria-label="Brunswick Heads Fish and Chippery home">
+      <img src="/assets/bhfc-logo.svg" alt="Brunswick Heads Fish & Chippery">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Menu</span></button>
+    <nav id="site-nav" aria-label="Main navigation">
+      <a href="#menu">Live menu</a>
+      <a href="#favourites">Favourites</a>
+      <a href="#story">Our story</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-order" data-order-link href="#">Order online</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <video autoplay muted loop playsinline poster="/assets/hero-poster.jpg" aria-hidden="true">
+        <source src="/assets/hero-reel.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Brunswick Heads · NSW</p>
+        <h1 id="hero-title">Freshly caught.<br>Cooked to order.</h1>
+        <p class="hero-copy">Fish, burgers, tacos and proper chips—served beside the Brunswick River.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" data-order-link href="#">Order online</a>
+          <a class="button button-ghost" href="#menu">View live menu</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#favourites" aria-label="Scroll to signature dishes">Explore <span>↓</span></a>
+    </section>
+
+    <section class="quick-strip" aria-label="Key information">
+      <div><strong>Live menu</strong><span>Prices and sold-out status update automatically.</span></div>
+      <div><strong>Freshly prepared</strong><span>Cooked to order in the heart of Bruns.</span></div>
+      <div><strong>Order ahead</strong><span>Pickup through Square Online.</span></div>
+    </section>
+
+    <section class="section favourites" id="favourites">
+      <div class="section-heading">
+        <p class="eyebrow">What we do best</p>
+        <h2>Brunswick favourites</h2>
+        <p>Big flavour, coastal produce and food that travels well to the park, river or beach.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature feature-video">
+          <video muted loop playsinline preload="metadata" poster="/assets/snapper-parmi-poster.jpg">
+            <source src="/assets/snapper-parmi.mp4" type="video/mp4">
+          </video>
+          <button class="video-control" aria-label="Play Snapper Parmi Burger video">Play</button>
+          <div class="feature-caption"><span>Burgers</span><h3>Snapper Parmi Burger</h3></div>
+        </article>
+        <article class="feature feature-video">
+          <video muted loop playsinline preload="metadata" poster="/assets/food-reel-poster.jpg">
+            <source src="/assets/food-reel.mp4" type="video/mp4">
+          </video>
+          <button class="video-control" aria-label="Play kitchen reel">Play</button>
+          <div class="feature-caption"><span>Fresh from the fryer</span><h3>Fish, chips & snacks</h3></div>
+        </article>
+        <article class="feature feature-image">
+          <img src="/assets/kitchen-team.jpg" alt="BHFC team preparing food in the kitchen">
+          <div class="feature-caption"><span>Made here</span><h3>A busy little kitchen</h3></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading menu-heading">
+        <div>
+          <p class="eyebrow">Connected to Square</p>
+          <h2>Today’s live menu</h2>
+          <p>Current prices and availability direct from the in-store system.</p>
+        </div>
+        <div class="menu-status" id="menu-status"><span></span> Loading live menu…</div>
+      </div>
+      <div class="menu-tabs" role="tablist" aria-label="Menu categories" id="menu-tabs"></div>
+      <div class="web-menu" id="web-menu" aria-live="polite">
+        <div class="menu-loading">Loading today’s menu…</div>
+      </div>
+      <div class="menu-actions">
+        <a class="button button-primary" data-order-link href="#">Order online</a>
+        <a class="text-link" href="https://bhfc-digital-menu.onrender.com" target="_blank" rel="noopener">Open the full menu board ↗</a>
+      </div>
+    </section>
+
+    <section class="story section" id="story">
+      <div class="story-copy">
+        <p class="eyebrow">World famous in Brunswick Heads</p>
+        <h2>Good fish. Good people. No fuss.</h2>
+        <p>We’re a neighbourhood fish and chippery serving locals, visitors and hungry families seven days a week. Our menu moves with availability, which is why this website is connected directly to our live menu system.</p>
+        <a class="text-link" href="#visit">Come and find us →</a>
+      </div>
+      <div class="story-media">
+        <video autoplay muted loop playsinline poster="/assets/brunswick-drone-poster.jpg">
+          <source src="/assets/brunswick-drone.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <section class="visit section" id="visit">
+      <div class="visit-card">
+        <p class="eyebrow">Visit us</p>
+        <h2>26 Mullumbimbi Street,<br>Brunswick Heads</h2>
+        <div class="visit-details">
+          <div><span>Phone</span><a href="tel:+61000000000" id="phone-link">Add phone number</a></div>
+          <div><span>Hours</span><p id="hours-copy">Open daily · hours to confirm</p></div>
+        </div>
+        <div class="visit-actions">
+          <a class="button button-primary" href="https://maps.google.com/?q=26+Mullumbimbi+Street+Brunswick+Heads+NSW" target="_blank" rel="noopener">Get directions</a>
+          <a class="button button-outline" data-order-link href="#">Order online</a>
+        </div>
+      </div>
+      <div class="visit-art" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="river river-one"></div>
+        <div class="river river-two"></div>
+        <span>Bruns</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="/assets/bhfc-logo.svg" alt="">
+    <div>
+      <strong>Brunswick Heads Fish & Chippery</strong>
+      <span>Freshly caught · cooked to order</span>
+    </div>
+    <div class="footer-links">
+      <a href="#menu">Live menu</a>
+      <a data-order-link href="#">Order online</a>
+      <a href="https://www.instagram.com/brunswickheadsfishandchippery/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </footer>
+
+  <script src="/app.js?v=1.0.0" defer></script>
+</body>
+</html>

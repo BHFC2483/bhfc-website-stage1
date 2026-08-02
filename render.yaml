@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: bhfc-website-stage1
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MENU_API_URL
+        value: https://bhfc-digital-menu.onrender.com/api/menu
