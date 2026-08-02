@@ -33,6 +33,6 @@ app.get("/api/live-menu", async (_req, res) => {
   }
 });
 
-app.get("/health", (_req, res) => res.json({ ok: true, version: "1.4.0", menuApi: MENU_API_URL }));
+app.get("/health", (_req, res) => res.json({ ok: true, version: "1.4.1", menuApi: MENU_API_URL }));
 app.use((_req, res) => res.sendFile(path.join(__dirname, "index.html")));
 app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website Stage 1.4 running on port ${PORT}`));

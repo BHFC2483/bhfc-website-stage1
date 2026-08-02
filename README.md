@@ -36,3 +36,17 @@ Replace existing files and commit. Render should redeploy automatically.
 If required:
 
 `Manual Deploy → Deploy latest commit`
+
+
+## Mobile preview refinements — 1.4.1
+
+- Mobile-first hero composition
+- Larger mobile typography
+- Swipeable menu category tabs
+- Single-column menu cards
+- Reordered tallow section for mobile
+- Full-width portrait video
+- Mobile-friendly Captain’s Pantry layout
+- Larger map and directions controls
+- Sticky Menu / Order Online action bar
+- Safe-area support for modern phones

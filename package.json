@@ -1,6 +1,6 @@
 {
-  "name": "bhfc-website-stage1-4",
-  "version": "1.4.0",
+  "name": "bhfc-website-stage1-4-mobile",
+  "version": "1.4.1",
   "private": true,
   "type": "module",
   "scripts": {
