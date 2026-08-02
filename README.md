@@ -1,4 +1,4 @@
-# BHFC Website — Stage 1
+# BHFC Website — Stage 1.1
 
 A separate Render-ready staging website for Brunswick Heads Fish & Chippery.
 
@@ -40,3 +40,10 @@ Update these details after confirmation:
 - Final approved logo asset if a higher-resolution original is supplied
 
 The current Square website and domain remain untouched until the staging site is approved.
+
+
+## Stage 1.1 deployment fix
+
+This package uses a flat repository structure to match GitHub browser uploads. `index.html`, CSS, JavaScript, images and videos all sit at repository root. The Express server serves both `/` and `/assets/...` from that root.
+
+Replace the current repository files with all files from this ZIP, commit, and Render will auto-deploy.
