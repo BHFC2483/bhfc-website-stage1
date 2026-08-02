@@ -1,4 +1,4 @@
-# BHFC Website Preview — Stage 1.2
+# BHFC Website Preview — Stage 1.3
 
 This is a direct replacement update for the existing `bhfc-website-stage1` GitHub repository.
 
@@ -31,3 +31,16 @@ Choose **Add file → Upload files**, replace existing files, and commit.
 Render should redeploy automatically. If not:
 
 **Manual Deploy → Deploy latest commit**
+
+
+## Stage 1.3 refinements
+- Official BHFC logo remains in the header only
+- Header logo has a transparent background
+- Hero no longer repeats the logo
+- Customer-facing technical language removed
+- Navigation and buttons now say Menu
+- Menu categories: Beer battered fish, Crumbed fish, Grilled fish, Burgers & tacos, Chips, Snacks
+- Drinks hidden
+- Phone number removed
+- Open daily 11:30am–7:00pm
+- Official Google Maps listing used
