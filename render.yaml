@@ -13,3 +13,6 @@ services:
         sync: false
       - key: GOOGLE_PLACE_ID
         sync: false
+
+      - key: GOOGLE_MAPS_EMBED_API_KEY
+        sync: false
