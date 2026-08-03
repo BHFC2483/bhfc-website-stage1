@@ -60,6 +60,6 @@ app.get("/api/google-place", async (_req, res) => {
 
 app.get("/api/google-map-config", (_req,res)=>res.json({configured:Boolean(GOOGLE_MAPS_EMBED_API_KEY&&GOOGLE_PLACE_ID),embedKey:GOOGLE_MAPS_EMBED_API_KEY,placeId:GOOGLE_PLACE_ID}));
 
-app.get("/health", (_req, res) => res.json({ ok: true, version: "1.7.0", menuApi: MENU_API_URL, googlePlacesConfigured: Boolean(GOOGLE_PLACES_API_KEY && GOOGLE_PLACE_ID) }));
+app.get("/health", (_req, res) => res.json({ ok: true, version: "1.8.0", menuApi: MENU_API_URL, googlePlacesConfigured: Boolean(GOOGLE_PLACES_API_KEY && GOOGLE_PLACE_ID) }));
 app.use((_req, res) => res.sendFile(path.join(__dirname, "index.html")));
-app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website Stage 1.7 running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website Stage 1.8 running on port ${PORT}`));
