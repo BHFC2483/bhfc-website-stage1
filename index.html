@@ -8,14 +8,14 @@
   <title>Brunswick Heads Fish & Chippery</title>
   <link rel="preconnect" href="https://use.typekit.net">
   <link rel="stylesheet" href="https://use.typekit.net/rlp8byb.css">
-  <link rel="stylesheet" href="/styles.css?v=1.4.1">
+  <link rel="stylesheet" href="/styles.css?v=1.5.0">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Brunswick Heads Fish & Chippery home">
-      <img src="/assets/bhfc-logo.png" alt="Brunswick Heads Fish & Chippery">
+      <img src="/assets/main-logo-transparent.png" alt="Brunswick Heads Fish & Chippery">
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
       <span></span><span></span><span></span><b class="sr-only">Menu</b>
@@ -65,23 +65,8 @@
     </section>
 
     <section class="tallow section" id="tallow">
-      <div class="tallow-media">
-        <video autoplay muted loop playsinline poster="/assets/fresh-prep-poster.jpg">
-          <source src="/assets/fresh-prep.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="tallow-copy">
-        <p class="eyebrow">The traditional way</p>
-        <h2>Why we cook in premium Australian beef tallow.</h2>
-        <p>We cook our chips and battered fish in premium Australian beef tallow. It gives food a crisp finish, rich traditional flavour and performs reliably at frying temperatures.</p>
-        <div class="tallow-points">
-          <span>Rich, traditional flavour</span>
-          <span>Light, crisp finish</span>
-          <span>Stable at frying temperatures</span>
-          <span>Premium Australian beef tallow</span>
-        </div>
-        <p class="fine-print">We describe our ingredients and cooking method rather than making comparative health claims.</p>
-      </div>
+      <div class="tallow-media"><video autoplay muted loop playsinline poster="/assets/fresh-prep-poster.jpg"><source src="/assets/fresh-prep.mp4" type="video/mp4"></video></div>
+      <div class="tallow-copy"><p class="eyebrow">The traditional way</p><h2>Why we fry in beef tallow</h2><p>We fry in traditional beef tallow because it performs beautifully at high temperatures and gives our fish and chips their crisp, golden finish and rich, savoury flavour.</p><p>Tallow’s fatty-acid composition also makes it naturally resistant to oxidation during frying.</p><p>It’s an old-school ingredient chosen for flavour, frying performance and simplicity.</p><div class="tallow-points"><span>Traditional beef tallow</span><span>Crisp, golden finish</span><span>Rich, savoury flavour</span><span>High-temperature performance</span></div></div>
     </section>
 
     <section class="fresh section">
@@ -112,8 +97,8 @@
         <a class="button navy-outline" href="#visit">Available in store</a>
       </div>
       <div class="pantry-media">
-        <video autoplay muted loop playsinline poster="/assets/snapper-parmi-poster.jpg">
-          <source src="/assets/snapper-parmi.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline poster="/assets/captains-pantry-poster.jpg">
+          <source src="/assets/captains-pantry.mp4" type="video/mp4">
         </video>
       </div>
     </section>
@@ -148,16 +133,12 @@
         </div>
         <div class="visit-card">
           <img src="/assets/bhfc-logo.png" alt="">
-          <address>
-            26 Mullumbimbi Street<br>
-            Brunswick Heads NSW 2483
-          </address>
-          <div class="hours">
-            <strong>Open daily</strong>
-            <span>11:30am–7:00pm</span>
-          </div>
+          <address id="google-address">26 Mullumbimbi Street<br>Brunswick Heads NSW 2483</address>
+          <div class="google-rating" id="google-rating" hidden></div>
+          <div class="hours"><strong id="open-status">Open daily</strong><span id="today-hours">11:30am–7:00pm</span></div>
+          <details class="weekly-hours"><summary>Trading hours</summary><div id="weekly-hours-list"><span>Monday: 11:30am–7:00pm</span><span>Tuesday: 11:30am–7:00pm</span><span>Wednesday: 11:30am–7:00pm</span><span>Thursday: 11:30am–7:00pm</span><span>Friday: 11:30am–7:00pm</span><span>Saturday: 11:30am–7:00pm</span><span>Sunday: 11:30am–7:00pm</span></div></details>
           <div class="visit-actions">
-            <a class="button red" href="https://www.google.com/maps/place/Brunswick+Heads+Fish+and+Chippery/@-28.5396668,153.5514526,20z/data=!4m6!3m5!1s0x6b908b11aeaf1e3f:0x3bf433e546932bda!8m2!3d-28.5395601!4d153.5511915!16s%2Fg%2F11xncppqxh" target="_blank" rel="noopener">Get directions</a>
+            <a class="button red" id="google-directions" href="https://www.google.com/maps/place/Brunswick+Heads+Fish+and+Chippery/@-28.5396668,153.5514526,20z/data=!4m6!3m5!1s0x6b908b11aeaf1e3f:0x3bf433e546932bda!8m2!3d-28.5395601!4d153.5511915!16s%2Fg%2F11xncppqxh" target="_blank" rel="noopener">Get directions</a>
             <a class="button navy-outline" data-order-link href="#">Order online</a>
             <a class="text-link" href="#menu">Menu</a>
           </div>
@@ -181,12 +162,6 @@
     </div>
   </footer>
 
-
-  <div class="mobile-order-bar" aria-label="Quick actions">
-    <a class="menu-link" href="#menu">Menu</a>
-    <a class="order-link" data-order-link href="#">Order online</a>
-  </div>
-
-  <script src="/app.js?v=1.4.1" defer></script>
+  <script src="/app.js?v=1.5.0" defer></script>
 </body>
 </html>

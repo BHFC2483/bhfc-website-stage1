@@ -25,8 +25,8 @@ const preferredOrder=[
   "Crumbed Fish",
   "Grilled Fish",
   "Burgers & Tacos",
-  "Chips",
-  "Snacks"
+  "Snacks",
+  "Chips"
 ];
 
 function classifySection(section){
@@ -99,3 +99,8 @@ async function loadMenu(){
 }
 loadMenu();
 setInterval(loadMenu,30000);
+
+function formatGoogleTime(v){if(!v)return"";const d=new Date(v);return Number.isNaN(d.getTime())?"":d.toLocaleTimeString("en-AU",{hour:"numeric",minute:"2-digit"})}
+function cleanAddress(a){return String(a||"").replace(", Australia","").replace(/,\s*NSW\s*2483/i,",<br>Brunswick Heads NSW 2483")}
+async function loadGoogleBusiness(){try{const r=await fetch("/api/google-place",{cache:"no-store"});const p=await r.json();const a=document.querySelector("#google-address");if(a&&p.formattedAddress)a.innerHTML=cleanAddress(p.formattedAddress);const s=document.querySelector("#open-status"),t=document.querySelector("#today-hours");if(s){if(p.openNow===true){s.textContent="Open now";s.className="is-open"}else if(p.openNow===false){s.textContent="Closed now";s.className="is-closed"}else s.textContent="Open daily"}if(t){const c=formatGoogleTime(p.nextCloseTime),o=formatGoogleTime(p.nextOpenTime);t.textContent=p.openNow===true&&c?`Closes at ${c}`:p.openNow===false&&o?`Opens at ${o}`:"11:30am–7:00pm"}const list=document.querySelector("#weekly-hours-list");if(list&&Array.isArray(p.weekdayDescriptions)&&p.weekdayDescriptions.length)list.innerHTML=p.weekdayDescriptions.map(x=>`<span>${esc(x)}</span>`).join("");const rating=document.querySelector("#google-rating");if(rating&&p.rating){rating.hidden=false;rating.textContent=`★ ${Number(p.rating).toFixed(1)}${p.userRatingCount?` · ${Number(p.userRatingCount).toLocaleString("en-AU")} Google reviews`:""}`}const d=document.querySelector("#google-directions");if(d&&p.googleMapsUri)d.href=p.googleMapsUri}catch(e){console.warn("Google business details unavailable",e)}}
+loadGoogleBusiness();
