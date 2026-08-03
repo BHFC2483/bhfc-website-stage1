@@ -30,15 +30,18 @@ const preferredOrder=[
 ];
 
 function classifySection(section){
-  const s=String(section||"").toLowerCase().trim();
-  if(s.includes("drink")) return null;
-  if(s.includes("crumb")) return "Crumbed Fish";
-  if(s.includes("grill")) return "Grilled Fish";
-  if(s.includes("burger")||s.includes("taco")) return "Burgers & Tacos";
-  if(s.includes("chip")) return "Chips";
-  if(s.includes("snack")) return "Snacks";
-  if(s.includes("batter")||s.includes("fresh fish")||s==="fresh") return "Beer Battered Fish";
-  return String(section||"").replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+  const raw=String(section||"").trim();
+  const compact=raw.toLowerCase().replace(/[^a-z0-9]/g,"");
+
+  // Match the Menu Manager / TV menu section keys exactly.
+  if(compact==="freshfish" || compact.includes("beerbatter") || compact==="fresh") return "Beer Battered Fish";
+  if(compact==="crumbed" || compact.includes("crumb")) return "Crumbed Fish";
+  if(compact==="grilled" || compact.includes("grill") || compact==="addchips") return "Grilled Fish";
+  if(compact==="burgers" || compact==="tacos" || compact.includes("burger") || compact.includes("taco")) return "Burgers & Tacos";
+  if(compact==="snacks" || compact.includes("snack")) return "Snacks";
+  if(compact==="chips" || compact.includes("chip")) return "Chips";
+  if(compact.includes("drink")) return null;
+  return raw.replace(/[-_]+/g," ").replace(/\w/g,c=>c.toUpperCase());
 }
 
 let menuData=null;
@@ -62,11 +65,9 @@ function groupedMenu(){
     if(!groups.has(label)) groups.set(label,[]);
     groups.get(label).push(...items);
   });
-  return [...groups.entries()].sort((a,b)=>{
-    const ai=preferredOrder.indexOf(a[0]);
-    const bi=preferredOrder.indexOf(b[0]);
-    return (ai<0?999:ai)-(bi<0?999:bi);
-  });
+  return preferredOrder
+    .filter(name=>groups.has(name))
+    .map(name=>[name,groups.get(name)]);
 }
 
 function renderMenu(){

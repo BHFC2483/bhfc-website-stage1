@@ -14,7 +14,7 @@ let googlePlaceCache = { expiresAt: 0, value: null };
 app.disable("x-powered-by");
 
 // Stage 1.4 deliberately supports the flat GitHub upload structure.
-app.use("/assets", express.static(__dirname, { maxAge: "1h" }));
+app.use("/assets", express.static(path.join(__dirname, "assets"), { maxAge: "1h" }));
 app.use(express.static(__dirname, {
   maxAge: "1h",
   setHeaders(res, filePath) {
@@ -57,6 +57,6 @@ app.get("/api/google-place", async (_req, res) => {
   catch(error){console.error("Google service layer error:",error.message);res.status(503).json({configured:Boolean(GOOGLE_PLACES_API_KEY&&GOOGLE_PLACE_ID),fallback:true,error:"Google business details temporarily unavailable",displayName:"Brunswick Heads Fish & Chippery",formattedAddress:"26 Mullumbimbi Street, Brunswick Heads NSW 2483",openNow:null,weekdayDescriptions:["Monday: 11:30 am–7:00 pm","Tuesday: 11:30 am–7:00 pm","Wednesday: 11:30 am–7:00 pm","Thursday: 11:30 am–7:00 pm","Friday: 11:30 am–7:00 pm","Saturday: 11:30 am–7:00 pm","Sunday: 11:30 am–7:00 pm"],rating:null,userRatingCount:null,googleMapsUri:"https://www.google.com/maps/place/Brunswick+Heads+Fish+and+Chippery/@-28.5396668,153.5514526,20z/data=!4m6!3m5!1s0x6b908b11aeaf1e3f:0x3bf433e546932bda!8m2!3d-28.5395601!4d153.5511915!16s%2Fg%2F11xncppqxh"})}
 });
 
-app.get("/health", (_req, res) => res.json({ ok: true, version: "1.5.0", menuApi: MENU_API_URL, googlePlacesConfigured: Boolean(GOOGLE_PLACES_API_KEY && GOOGLE_PLACE_ID) }));
+app.get("/health", (_req, res) => res.json({ ok: true, version: "1.6.0", menuApi: MENU_API_URL, googlePlacesConfigured: Boolean(GOOGLE_PLACES_API_KEY && GOOGLE_PLACE_ID) }));
 app.use((_req, res) => res.sendFile(path.join(__dirname, "index.html")));
-app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website Stage 1.5 running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website Stage 1.6 running on port ${PORT}`));
