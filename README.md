@@ -18,3 +18,10 @@ One continuous menu. Order: Beer Battered Fish, Crumbed Fish, Grilled Fish, Add 
 - Renamed Packs to Meal Packs on the website.
 - Menu Manager detail/description text now displays beneath pack names and wraps over multiple lines without widening the menu.
 - Suitable pack description: Beer battered or crumbed fish, calamari, prawn cutlets & small chips.
+
+
+## RC3 landscape menu change
+- Removed the long vertical website menu.
+- Menu navigation now opens the same live landscape menu used on the TV.
+- PACKS appears according to the digital-menu renderer.
+- Fresh Fish / Beer Battered presentation now comes directly from the digital menu, avoiding duplicate website formatting.
