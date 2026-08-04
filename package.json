@@ -1,6 +1,6 @@
 {
   "name": "bhfc-website-v1-release-candidate",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc2",
   "private": true,
   "type": "module",
   "scripts": {
