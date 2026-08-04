@@ -18,3 +18,19 @@ async function loadGoogle(){
   }catch{}
 }
 loadGoogle();
+
+
+// RC4: scale the fixed 1920×1080 TV renderer to the available website width.
+function fitLandscapeMenu(){
+  const frame=document.getElementById("landscape-menu-frame");
+  const iframe=document.getElementById("live-landscape-menu");
+  if(!frame||!iframe)return;
+  const scale=frame.clientWidth/1920;
+  iframe.style.transform=`scale(${scale})`;
+}
+window.addEventListener("load",fitLandscapeMenu);
+window.addEventListener("resize",fitLandscapeMenu);
+if("ResizeObserver" in window){
+  const frame=document.getElementById("landscape-menu-frame");
+  if(frame)new ResizeObserver(fitLandscapeMenu).observe(frame);
+}

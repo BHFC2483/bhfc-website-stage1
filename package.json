@@ -1,6 +1,6 @@
 {
-  "name": "bhfc-website-v1-release-candidate",
-  "version": "1.0.3",
+  "name": "bhfc-website-v1-rc4-full-landscape-menu",
+  "version": "1.0.0-rc4",
   "private": true,
   "type": "module",
   "scripts": {

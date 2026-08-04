@@ -86,4 +86,4 @@ app.get("/api/google-map-config", (_req, res) => res.json({
 }));
 app.get("/health", (_req, res) => res.json({ ok: true, version: "1.0.0-rc2", videos: ["hero-reel.mp4","fresh-prep.mp4","captains-pantry.mp4","brunswick-drone.mp4"] }));
 app.use((_req, res) => res.sendFile(path.join(__dirname, "index.html")));
-app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website v1.0 Release Candidate running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => console.log(`BHFC Website v1.0 Release Candidate RC4 running on port ${PORT}`));
