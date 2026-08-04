@@ -1,10 +1,36 @@
-# BHFC Website v1.0 Release Candidate RC4
+# BHFC Digital Menu V13.0 — Dual Display Preview
 
-## Menu correction
+## Displays
 
-- Removed the tallow banner, Menu heading and explanatory text from the website menu section.
-- Displays only the complete live 1920×1080 landscape menu.
-- The fixed TV canvas is scaled proportionally to fill up to 95% of the browser width.
-- No clipping or top-left-only view.
-- Buttons below: Order online and Open menu.
-- The embedded menu remains connected to the live BHFC Digital Menu service.
+- `/main` or `/` — TV 1: Main Menu
+- `/snacks` — TV 2: Snacks & More
+- `/admin` — Menu Manager with dual live previews
+
+## TV 1 — Main Menu
+
+- Fresh Fish / Beer Battered
+- Crumbed
+- Grilled
+- Add Chips
+- Burgers
+- Tacos
+- Meal Packs with multiline descriptions
+- Seafood origin footer retained
+
+## TV 2 — Snacks & More
+
+- Snacks, Chips and Sauces remain live from Menu Manager / Square
+- Four branded promotional tiles:
+  - Spicy Crab Burger
+  - Pure Beef Tallow
+  - Captain’s Pantry
+  - Kids Pack
+
+## Yodeck
+
+Use these two URLs:
+
+- Main screen: `https://bhfc-digital-menu.onrender.com/main`
+- Second screen: `https://bhfc-digital-menu.onrender.com/snacks`
+
+Both pages are fixed at 1920×1080 and refresh live menu data every 10 seconds.
