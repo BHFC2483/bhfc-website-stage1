@@ -1,4 +1,4 @@
-// v1.2.1 browser capability marker. Chrome desktop uses a reliable static menu preview; Edge keeps the live embed.
+// v1.3.0 browser capability marker. Chrome desktop uses a reliable static menu preview; Edge keeps the live embed.
 const ua=navigator.userAgent;
 const isDesktopChrome=/Chrome\//.test(ua)&&!/Edg\//.test(ua)&&!/OPR\//.test(ua)&&!/Mobile/.test(ua);
 if(isDesktopChrome)document.documentElement.classList.add("chrome-desktop");
@@ -39,3 +39,13 @@ if("ResizeObserver" in window){
   const observer=new ResizeObserver(fitLiveMenus);
   document.querySelectorAll("[data-menu-frame]").forEach(frame=>observer.observe(frame));
 }
+
+
+// v1.3.0: compact the persistent mobile header after scrolling.
+const siteHeader=document.querySelector('.site-header');
+function updateStickyHeader(){
+  if(!siteHeader)return;
+  siteHeader.classList.toggle('is-scrolled',window.scrollY>36);
+}
+window.addEventListener('scroll',updateStickyHeader,{passive:true});
+updateStickyHeader();

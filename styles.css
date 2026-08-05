@@ -182,3 +182,72 @@
     .hero h1{font-size:clamp(3rem,15.5vw,5rem)}
   }
 }
+
+
+/* v1.3.0 — persistent mobile Order Online header */
+.mobile-order-pill{display:none}
+@media(max-width:900px){
+  .site-header{
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    height:78px;
+    padding:7px 14px;
+    z-index:1000;
+    background:rgba(0,48,135,.90);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 18px rgba(0,25,65,.22);
+    transition:height .2s ease,background .2s ease,padding .2s ease;
+  }
+  .site-header .brand{
+    display:flex;
+    align-items:center;
+    min-width:0;
+  }
+  .site-header .brand img{
+    width:96px;
+    max-height:64px;
+    transition:width .2s ease,max-height .2s ease;
+  }
+  .mobile-order-pill{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    min-height:44px;
+    padding:10px 17px;
+    border-radius:999px;
+    background:var(--red);
+    color:#fff;
+    text-decoration:none;
+    font-weight:900;
+    font-size:.93rem;
+    line-height:1;
+    white-space:nowrap;
+    box-shadow:0 6px 16px rgba(228,0,43,.25);
+  }
+  .nav-toggle{display:none!important}
+  .site-header.is-scrolled{
+    height:64px;
+    padding-top:5px;
+    padding-bottom:5px;
+    background:rgba(0,48,135,.97);
+  }
+  .site-header.is-scrolled .brand img{
+    width:78px;
+    max-height:52px;
+  }
+  .site-header.is-scrolled .mobile-order-pill{
+    min-height:40px;
+    padding:9px 15px;
+    font-size:.87rem;
+  }
+  .hero-inner{padding-top:126px}
+}
+@media(max-width:390px){
+  .site-header{padding-left:10px;padding-right:10px}
+  .site-header .brand img{width:86px}
+  .mobile-order-pill{padding-inline:14px;font-size:.87rem}
+}
