@@ -1,4 +1,4 @@
-const ORDER_URL="https://www.brunswickheadsfishandchippery.com.au/order-online";
+const ORDER_URL="https://www.brunswickheadsfishandchippery.com.au/s/order";
 document.querySelectorAll("[data-order-link]").forEach(a=>a.href=ORDER_URL);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 async function loadGoogle(){
