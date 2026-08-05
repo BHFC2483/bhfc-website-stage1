@@ -1,7 +1,10 @@
-# BHFC Website v1.2.0 — Mobile Menu Fix
+# BHFC Website v1.2.1 — Browser Compatibility
 
-- Mobile menu previews use bundled static 16:9 images instead of iframes.
-- Preview cards open the live Main Menu or Snacks & More menu.
-- Desktop retains live menu iframes.
-- All Order Online links now point to the Square Online order page.
-- Footer displays the deployed website version.
+Focused fixes only:
+
+- Windows Chrome uses the bundled 16:9 menu previews, avoiding the broken cross-origin embed.
+- Windows Edge retains live embedded menus.
+- iPhone Safari hero overlay, headline and buttons are centred and constrained to the viewport.
+- iPhone Chrome behaviour remains unchanged.
+- Order Online remains linked to Square Online.
+- Footer marker: BHFC Website v1.2.1.

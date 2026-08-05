@@ -125,3 +125,60 @@
   .live-menu-heading h2{font-size:clamp(2.35rem,12vw,4rem)}
   .menu-actions .button{width:min(100%,330px)}
 }
+
+
+/* v1.2.1 — Windows Chrome menu fallback + iPhone Safari hero centring */
+@media (min-width:901px){
+  html.chrome-desktop .landscape-menu-frame iframe{display:none!important}
+  html.chrome-desktop .mobile-menu-preview-link{
+    display:block!important;
+    position:absolute;
+    inset:0;
+  }
+  html.chrome-desktop .mobile-menu-preview{
+    display:block!important;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    background:var(--cream);
+  }
+}
+
+@media(max-width:900px){
+  .hero{min-height:100svh;display:flex;align-items:center;justify-content:center}
+  .hero>video{object-fit:cover;object-position:center center}
+  .hero-inner{
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    padding:118px 18px 110px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero-inner .eyebrow{width:100%;text-align:center}
+  .hero h1{
+    width:100%;
+    max-width:100%;
+    margin:15px auto 25px;
+    padding:0 4px;
+    font-size:clamp(3.15rem,16vw,5.15rem);
+    line-height:.94;
+    text-align:center;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .hero-actions{width:100%;align-items:center}
+  .hero-actions .button{max-width:330px}
+}
+
+@supports (-webkit-touch-callout:none){
+  @media(max-width:900px){
+    .hero-inner{left:auto;right:auto;transform:none}
+    .hero h1{font-size:clamp(3rem,15.5vw,5rem)}
+  }
+}
