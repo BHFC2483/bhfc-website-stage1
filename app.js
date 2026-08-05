@@ -20,17 +20,18 @@ async function loadGoogle(){
 loadGoogle();
 
 
-// RC4: scale the fixed 1920×1080 TV renderer to the available website width.
-function fitLandscapeMenu(){
-  const frame=document.getElementById("landscape-menu-frame");
-  const iframe=document.getElementById("live-landscape-menu");
-  if(!frame||!iframe)return;
-  const scale=frame.clientWidth/1920;
-  iframe.style.transform=`scale(${scale})`;
+// v1.1: scale each fixed 1920×1080 TV renderer independently.
+function fitLiveMenus(){
+  document.querySelectorAll("[data-menu-frame]").forEach(frame=>{
+    const iframe=frame.querySelector(".live-landscape-menu");
+    if(!iframe)return;
+    const scale=frame.clientWidth/1920;
+    iframe.style.transform=`scale(${scale})`;
+  });
 }
-window.addEventListener("load",fitLandscapeMenu);
-window.addEventListener("resize",fitLandscapeMenu);
+window.addEventListener("load",fitLiveMenus);
+window.addEventListener("resize",fitLiveMenus);
 if("ResizeObserver" in window){
-  const frame=document.getElementById("landscape-menu-frame");
-  if(frame)new ResizeObserver(fitLandscapeMenu).observe(frame);
+  const observer=new ResizeObserver(fitLiveMenus);
+  document.querySelectorAll("[data-menu-frame]").forEach(frame=>observer.observe(frame));
 }

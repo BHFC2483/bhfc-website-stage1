@@ -48,14 +48,28 @@
 
 
 
-/* RC4 — full live landscape menu */
+/* v1.1 — dual live V13 menu displays */
 .landscape-menu-section{
-  padding:126px 2.5vw 80px;
+  padding:126px 2.5vw 90px;
   background:#fff;
+}
+.live-menu-block{
+  max-width:1760px;
+  margin:0 auto 88px;
+}
+.live-menu-block:last-child{margin-bottom:0}
+.live-menu-heading{
+  text-align:center;
+  margin:0 0 26px;
+}
+.live-menu-heading .eyebrow{margin:0 0 8px;color:var(--navy)}
+.live-menu-heading h2{
+  margin:0;
+  font-size:clamp(3rem,5vw,5.5rem);
 }
 .landscape-menu-frame{
   position:relative;
-  width:min(95vw, 1760px);
+  width:min(95vw,1760px);
   aspect-ratio:16 / 9;
   margin:0 auto;
   overflow:hidden;
@@ -73,11 +87,12 @@
   transform-origin:top left;
   background:var(--cream);
 }
-.landscape-menu-section .menu-actions{
-  margin-top:28px;
-}
+.live-menu-block .menu-actions{margin-top:28px}
 @media(max-width:900px){
-  .landscape-menu-section{padding:105px 10px 55px}
+  .landscape-menu-section{padding:105px 10px 60px}
+  .live-menu-block{margin-bottom:58px}
+  .live-menu-heading{margin-bottom:18px}
   .landscape-menu-frame{width:100%;border-radius:12px}
-  .landscape-menu-section .menu-actions{margin-top:20px}
+  .live-menu-block .menu-actions{margin-top:20px}
 }
+

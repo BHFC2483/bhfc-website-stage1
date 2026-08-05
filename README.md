@@ -1,36 +1,15 @@
-# BHFC Digital Menu V13.0 — Dual Display Preview
+# BHFC Website v1.1 — Dual Live Menu
 
-## Displays
+## Menu page
 
-- `/main` or `/` — TV 1: Main Menu
-- `/snacks` — TV 2: Snacks & More
-- `/admin` — Menu Manager with dual live previews
+- Removes the old website-specific menu renderer.
+- Embeds the live V13 digital menu as two full 16:9 displays:
+  - Main Menu: `https://bhfc-digital-menu.onrender.com/main`
+  - Snacks & More: `https://bhfc-digital-menu.onrender.com/snacks`
+- Each menu has its own Order Online and Open Full Screen button.
+- Both embedded menus scale independently to the available website width.
+- Prices, sold-out status, item changes and menu layout remain controlled by the live digital-menu service.
 
-## TV 1 — Main Menu
+## Deployment
 
-- Fresh Fish / Beer Battered
-- Crumbed
-- Grilled
-- Add Chips
-- Burgers
-- Tacos
-- Meal Packs with multiline descriptions
-- Seafood origin footer retained
-
-## TV 2 — Snacks & More
-
-- Snacks, Chips and Sauces remain live from Menu Manager / Square
-- Four branded promotional tiles:
-  - Spicy Crab Burger
-  - Pure Beef Tallow
-  - Captain’s Pantry
-  - Kids Pack
-
-## Yodeck
-
-Use these two URLs:
-
-- Main screen: `https://bhfc-digital-menu.onrender.com/main`
-- Second screen: `https://bhfc-digital-menu.onrender.com/snacks`
-
-Both pages are fixed at 1920×1080 and refresh live menu data every 10 seconds.
+Upload the contents of this folder to the root of the `bhfc-website-stage1` GitHub repository, commit, then deploy the latest commit in the existing Render website service.
