@@ -1,60 +1,85 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Brunswick Heads Fish & Chippery — Live Menu</title>
-  <link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#003087">
+  <meta name="description" content="Brunswick Heads Fish & Chippery — freshly caught and cooked to order.">
+  <title>Brunswick Heads Fish & Chippery</title>
+  <link rel="preconnect" href="https://use.typekit.net"><link rel="stylesheet" href="https://use.typekit.net/rlp8byb.css">
+  <link rel="stylesheet" href="/styles.css?v=1.3.0">
 </head>
 <body>
-  <div id="promo" class="promo" hidden></div><main id="menu" class="menu-canvas" aria-label="Brunswick Heads Fish and Chippery menu">
-    <div class="rope-border" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="#top"><img src="/bhfc-logo.png" alt="Brunswick Heads Fish & Chippery"></a>
+  <a class="mobile-order-pill" data-order-link href="#">Order online</a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+  <nav id="site-nav"><a href="#menu">Menu</a><a href="#pantry">Captain’s Pantry</a><a href="#visit">Visit</a><a class="order-pill" data-order-link href="#">Order online</a></nav>
+</header>
+<main>
+<section class="hero" id="top">
+  <video autoplay muted loop playsinline preload="auto" poster="/hero-poster.jpg"><source src="/hero-reel.mp4" type="video/mp4"></video>
+  <div class="hero-overlay"></div><div class="hero-inner"><p class="eyebrow">Brunswick Heads · NSW</p><h1>Freshly caught.<br>Cooked to order.</h1><div class="hero-actions"><a class="button red" data-order-link href="#">Order online</a><a class="button aqua" href="#menu">View menu</a></div></div>
+  <a class="scroll" href="#menu">Explore ↓</a>
+</section>
+<section class="menu-section landscape-menu-section" id="menu">
+  <div class="live-menu-block">
+    <div class="live-menu-heading">
+      <p class="eyebrow">TV 1</p>
+      <h2>Main Menu</h2>
+    </div>
+    <div class="landscape-menu-frame" data-menu-frame>
+      <a class="mobile-menu-preview-link" href="https://bhfc-digital-menu.onrender.com/main" target="_blank" rel="noopener" aria-label="Open live Main Menu"><img class="mobile-menu-preview" src="/main-menu-mobile-v12.jpg?v=1.2.1" alt="Main Menu preview"></a>
+      <iframe
+        class="live-landscape-menu"
+        src="https://bhfc-digital-menu.onrender.com/main"
+        title="Brunswick Heads Fish & Chippery Main Menu"
+        loading="eager"
+        scrolling="no"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="menu-actions">
+      <a class="button red" data-order-link href="#">Order online</a>
+      <a class="button navy-outline" href="https://bhfc-digital-menu.onrender.com/main" target="_blank" rel="noopener">Open Main Menu ↗</a>
+    </div>
+  </div>
 
-    <section class="column">
-      <h1>FRESH FISH</h1>
-      <h2>BEER BATTERED:</h2>
-      <div data-section="fresh-fish-battered"></div>
-
-      <h2>CRUMBED:</h2>
-      <div data-section="fresh-fish-crumbed"></div>
-
-      <h2>GRILLED:</h2>
-      <div data-section="fresh-fish-grilled"></div>
-
-      <div class="addon" data-section="grilled-addons"></div>
-
-      <h2>ADD CHIPS:</h2>
-      <div data-section="add-chips"></div>
-    </section>
-
-    <section class="column middle">
-      <h1>BURGERS</h1>
-      <p class="description">ON A SOFT BRIOCHE BUN W. LETTUCE,<br>SLAW, PICKLES, JALAPEÑO &amp; SAUCES</p>
-      <div data-section="burgers"></div>
-
-      <h1 class="section-gap">TACO’S</h1>
-      <p class="description">ON A SOFT TORTILLA W. SLAW, JALAPEÑO,<br>PICKLED ONION &amp; SAUCE</p>
-      <div data-section="tacos"></div>
-      <div class="choice-line" data-section="taco-pricing"></div>
-    </section>
-
-    <section class="column">
-      <h1>SNACKS</h1>
-      <div data-section="snacks"></div>
-
-      <h1 class="section-gap chips-heading">CHIPS</h1>
-      <div data-section="chips"></div>
-    </section>
-
-    <footer>
-      <div>◎ &nbsp; #BRUNSWICKHEADSFISHANDCHIPPERY</div>
-      <div>SEAFOOD ORIGIN: A = AUSTRALIAN | I = IMPORTED | M = MIXED</div>
-      <div>10% SURCHARGE ON WEEKENDS</div>
-    </footer>
-
-    <div id="status" class="status" aria-live="polite"></div>
-  </main>
-  <script src="/app.js"></script>
-</body>
-</html>
+  <div class="live-menu-block">
+    <div class="live-menu-heading">
+      <p class="eyebrow">TV 2</p>
+      <h2>Snacks &amp; More</h2>
+    </div>
+    <div class="landscape-menu-frame" data-menu-frame>
+      <a class="mobile-menu-preview-link" href="https://bhfc-digital-menu.onrender.com/snacks" target="_blank" rel="noopener" aria-label="Open live Snacks and More menu"><img class="mobile-menu-preview" src="/snacks-menu-mobile-v12.jpg?v=1.2.1" alt="Snacks and More menu preview"></a>
+      <iframe
+        class="live-landscape-menu"
+        src="https://bhfc-digital-menu.onrender.com/snacks"
+        title="Brunswick Heads Fish & Chippery Snacks and More Menu"
+        loading="lazy"
+        scrolling="no"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="menu-actions">
+      <a class="button red" data-order-link href="#">Order online</a>
+      <a class="button navy-outline" href="https://bhfc-digital-menu.onrender.com/snacks" target="_blank" rel="noopener">Open Snacks &amp; More ↗</a>
+    </div>
+  </div>
+</section>
+<section class="prepared section">
+  <div class="prepared-copy"><p class="eyebrow">Prepared fresh daily</p><h2>Real food.<br>Made right here.</h2><p>Fresh fish, house crumb, burgers, tacos and chips prepared in our Brunswick Heads kitchen.</p></div>
+  <div class="prepared-video"><video autoplay muted loop playsinline preload="metadata" poster="/fresh-prep-poster.jpg"><source src="/fresh-prep.mp4" type="video/mp4"></video></div>
+</section>
+<section class="pantry section" id="pantry">
+  <div class="pantry-copy"><p class="eyebrow">Take a little piece of BHFC home</p><h2>Captain’s Pantry</h2><p>Premium pantry goods, conservas, salts, sauces, gifts, T-shirts and caps—available in store.</p><div class="pantry-categories"><span>Pantry staples</span><span>Conservas & seafood</span><span>Gifts</span><span>T-shirts & caps</span></div></div>
+  <div class="pantry-video"><video autoplay muted loop playsinline preload="auto" poster="/captains-pantry-poster.jpg"><source src="/captains-pantry.mp4" type="video/mp4"></video></div>
+</section>
+<section class="location section">
+  <div class="location-video"><video autoplay muted loop playsinline preload="metadata" poster="/brunswick-drone-poster.jpg"><source src="/brunswick-drone.mp4" type="video/mp4"></video></div>
+  <div class="location-copy"><p class="eyebrow">Brunswick Heads</p><h2>River. Beach.<br>Fish & chips.</h2><p>Pick up your order and take it to the river, the park or the beach.</p><a class="button aqua" href="#visit">Find us</a></div>
+</section>
+<section class="visit section" id="visit"><div class="visit-grid"><div class="map-wrap"><iframe id="google-map" title="Brunswick Heads Fish & Chippery map" loading="lazy"></iframe></div><div class="visit-card"><img src="/bhfc-logo.png" alt=""><address id="google-address">26 Mullumbimbi Street<br>Brunswick Heads NSW 2483</address><div id="google-rating" class="google-rating" hidden></div><div class="hours"><strong id="open-status">Open daily</strong><span id="today-hours">11:30am–7:00pm</span></div><details><summary>Trading hours</summary><div id="weekly-hours-list"></div></details><div class="hero-actions"><a id="google-directions" class="button red" target="_blank" rel="noopener">Get directions</a><a class="button navy-outline" data-order-link href="#">Order online</a></div></div></div></section>
+</main>
+<footer><img src="/bhfc-logo.png" alt="Brunswick Heads Fish & Chippery"><div class="footer-block"><strong>Quick links</strong><a href="#menu">Menu</a><a href="#pantry">Captain’s Pantry</a><a href="#visit">Visit</a><a data-order-link href="#">Order online</a></div><div class="footer-block"><strong>Follow us</strong><a href="https://instagram.com/brunswickheadsfishandchippery" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/profile.php?id=61577188411980" target="_blank" rel="noopener">Facebook</a></div><div class="footer-block"><strong>Visit us</strong><span>26 Mullumbimbi Street<br>Brunswick Heads NSW 2483</span><span>Open daily · 11:30am–7:00pm</span></div><div class="footer-version">BHFC Website v1.3.1</div></footer>
+<script src="/app.js?v=1.3.0" defer></script>
+</body></html>

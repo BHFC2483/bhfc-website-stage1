@@ -1,3 +1,51 @@
-const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));const money=v=>new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD',maximumFractionDigits:Number.isInteger(v)?0:2}).format(v).replace('$','');
-function row(x){if(x.text)return`<div>${esc(x.text)}</div>`;const p=x.soldOut?'SOLD OUT':x.priceText||(!x.noPrice&&typeof x.price==='number'?money(x.price):'');return`<div class="menu-row ${x.soldOut?'sold-out':''}"><span class="name">${esc(x.name)}${x.origin?`<span class="origin">${esc(x.origin)}</span>`:''}${x.badge?`<span class="badge">${esc(x.badge)}</span>`:''}</span><span class="detail">${esc(x.detail||'')}</span><span class="leader"></span><span class="price">${esc(p)}</span></div>`}
-async function load(){try{const m=await fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()),r=document.documentElement.style,s=m.settings;r.setProperty('--cream',s.theme.cream);r.setProperty('--navy',s.theme.navy);r.setProperty('--red',s.theme.red);r.setProperty('--aqua',s.theme.aqua);if(s.theme.adobeFontsUrl&&!document.querySelector('#adobe')){const l=document.createElement('link');l.id='adobe';l.rel='stylesheet';l.href=s.theme.adobeFontsUrl;document.head.appendChild(l)}Object.entries(m.sections).forEach(([k,v])=>{const h=document.querySelector(`[data-section="${k}"]`);if(h)h.innerHTML=v.map(row).join('')});const p=document.querySelector('#promo');p.textContent=m.promotions[0]?.message||'';p.hidden=!p.textContent;document.body.classList.toggle('square-offline',!m.squareOnline)}catch{document.body.classList.add('square-offline')}}load();setInterval(load,60000);
+// v1.3.0 browser capability marker. Chrome desktop uses a reliable static menu preview; Edge keeps the live embed.
+const ua=navigator.userAgent;
+const isDesktopChrome=/Chrome\//.test(ua)&&!/Edg\//.test(ua)&&!/OPR\//.test(ua)&&!/Mobile/.test(ua);
+if(isDesktopChrome)document.documentElement.classList.add("chrome-desktop");
+const ORDER_URL="https://order.brunswickheadsfishandchippery.com.au";
+document.querySelectorAll("[data-order-link]").forEach(a=>a.href=ORDER_URL);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+async function loadGoogle(){
+  try{
+    const p=await(await fetch("/api/google-place",{cache:"no-store"})).json();
+    const address=document.querySelector("#google-address");
+    if(address&&p.formattedAddress)address.innerHTML=esc(p.formattedAddress).replace(", Brunswick Heads","<br>Brunswick Heads");
+    if(p.rating){const el=document.querySelector("#google-rating");if(el){el.hidden=false;el.textContent=`★ ${Number(p.rating).toFixed(1)}${p.userRatingCount?` · ${Number(p.userRatingCount).toLocaleString("en-AU")} Google reviews`:""}`}}
+    const status=document.querySelector("#open-status");if(status)status.textContent=p.openNow===true?"Open now":p.openNow===false?"Closed now":"Open daily";
+    const hours=document.querySelector("#weekly-hours-list");if(hours)hours.innerHTML=(p.weekdayDescriptions||[]).map(x=>`<span>${esc(x)}</span>`).join("");
+    const directions=document.querySelector("#google-directions");if(directions&&p.googleMapsUri)directions.href=p.googleMapsUri;
+  }catch{}
+  try{
+    const c=await(await fetch("/api/google-map-config")).json();
+    const map=document.querySelector("#google-map");
+    if(map)map.src=c.configured?`https://www.google.com/maps/embed/v1/place?key=${encodeURIComponent(c.embedKey)}&q=place_id:${encodeURIComponent(c.placeId)}`:"https://www.google.com/maps?q=Brunswick+Heads+Fish+and+Chippery&output=embed";
+  }catch{}
+}
+loadGoogle();
+
+
+// v1.1: scale each fixed 1920×1080 TV renderer independently.
+function fitLiveMenus(){
+  document.querySelectorAll("[data-menu-frame]").forEach(frame=>{
+    const iframe=frame.querySelector(".live-landscape-menu");
+    if(!iframe)return;
+    const scale=frame.clientWidth/1920;
+    iframe.style.transform=`scale(${scale})`;
+  });
+}
+window.addEventListener("load",fitLiveMenus);
+window.addEventListener("resize",fitLiveMenus);
+if("ResizeObserver" in window){
+  const observer=new ResizeObserver(fitLiveMenus);
+  document.querySelectorAll("[data-menu-frame]").forEach(frame=>observer.observe(frame));
+}
+
+
+// v1.3.0: compact the persistent mobile header after scrolling.
+const siteHeader=document.querySelector('.site-header');
+function updateStickyHeader(){
+  if(!siteHeader)return;
+  siteHeader.classList.toggle('is-scrolled',window.scrollY>36);
+}
+window.addEventListener('scroll',updateStickyHeader,{passive:true});
+updateStickyHeader();

@@ -421,6 +421,78 @@
         "autoSquareMatch": true
       }
     ],
-    "sauces": []
+    "sauces": [
+      {
+        "id": "sa-tomato",
+        "name": "TOMATO",
+        "price": 1,
+        "squareVariationId": "",
+        "squareAliases": [
+          "tomato sauce"
+        ],
+        "autoSquareMatch": true
+      },
+      {
+        "id": "sa-bbq",
+        "name": "BBQ",
+        "price": 1,
+        "squareVariationId": "",
+        "squareAliases": [
+          "bbq sauce",
+          "barbecue sauce"
+        ],
+        "autoSquareMatch": true
+      },
+      {
+        "id": "sa-aioli",
+        "name": "AIOLI",
+        "price": 2,
+        "squareVariationId": "",
+        "squareAliases": [
+          "aioli"
+        ],
+        "autoSquareMatch": true
+      },
+      {
+        "id": "sa-tartare",
+        "name": "TARTARE",
+        "price": 2,
+        "squareVariationId": "",
+        "squareAliases": [
+          "tartare sauce"
+        ],
+        "autoSquareMatch": true
+      },
+      {
+        "id": "sa-spicy-mayo",
+        "name": "SPICY MAYO",
+        "price": 2,
+        "squareVariationId": "",
+        "squareAliases": [
+          "spicy mayo"
+        ],
+        "autoSquareMatch": true
+      },
+      {
+        "id": "sa-wasabi-mayo",
+        "name": "WASABI MAYO",
+        "price": 2,
+        "squareVariationId": "",
+        "squareAliases": [
+          "wasabi mayo"
+        ],
+        "autoSquareMatch": true
+      },
+      {
+        "id": "sa-gravy",
+        "name": "GRAVY",
+        "price": 4,
+        "squareVariationId": "",
+        "squareAliases": [
+          "gravy"
+        ],
+        "autoSquareMatch": true
+      }
+    ]
   }
 }
