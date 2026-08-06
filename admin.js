@@ -1,6 +1,6 @@
 let settings,content,map,catalog=[];
 const $=s=>document.querySelector(s),esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]));
-const sectionLabels={freshFish:"Fresh Fish — Beer Battered",crumbed:"Fresh Fish — Crumbed",grilled:"Fresh Fish — Grilled",addChips:"Add Chips",burgers:"Burgers",tacos:"Tacos",packs:"Packs",snacks:"Snacks",chips:"Chips"};
+const sectionLabels={freshFish:"Fresh Fish — Beer Battered",crumbed:"Fresh Fish — Crumbed",grilled:"Fresh Fish — Grilled",addChips:"Add Chips",burgers:"Burgers",tacos:"Tacos",packs:"Meal Packs",snacks:"Snacks",chips:"Chips",sauces:"Sauces"};
 async function api(url,o={}){const r=await fetch(url,{headers:{"Content-Type":"application/json"},...o});const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.error||r.statusText);return d}
 async function begin(){const s=await api("/api/admin/session");if(!s.authenticated)return;$("#login").hidden=true;$("#app").hidden=false;[settings,content,map]=await Promise.all([api("/api/settings"),api("/api/admin/content"),api("/api/admin/map")]);fill();renderPromos();await loadCatalog();loadLiveStatus();loadPersistenceStatus();fitPreview();loadSystemHealth();}
 $("#login-form").onsubmit=async e=>{e.preventDefault();try{await api("/api/admin/login",{method:"POST",body:JSON.stringify({password:$("#password").value})});begin()}catch(x){$("#login-error").textContent=x.message}};
@@ -24,9 +24,27 @@ $("#add-square").onchange=e=>{const x=catalog.find(v=>v.id===e.target.value);if(
 $("#add-form").onsubmit=e=>{if(e.submitter?.value==="cancel")return;e.preventDefault();const section=$("#add-section").value,sid=$("#add-square").value,cat=catalog.find(x=>x.id===sid),name=$("#add-name").value.trim();if(!name)return;const row={id:`custom-${crypto.randomUUID()}`,name,detail:$("#add-detail").value.trim(),origin:$("#add-origin").value.trim().toUpperCase(),squareVariationId:sid,autoSquareMatch:false};const priceText=$("#add-price-text").value.trim(),price=Number($("#add-price").value);if(priceText)row.priceText=priceText;else if(Number.isFinite(price)&&price>=0)row.price=price;else if(cat)row.price=Number(cat.price||0);map.sections[section].push(row);content.overrides[row.id]={};$("#add-dialog").close();renderItems();queueMenuAutosave()};
 function renderPromos(){$("#promos-list").innerHTML=(content.promotions||[]).map((p,i)=>`<div class="promo-row" data-i="${i}"><label>Name<input class="pn" value="${esc(p.name)}"></label><label>Message<input class="pm" value="${esc(p.message)}"></label><label>Start<input class="ps" type="time" value="${esc(p.start)}"></label><label>End<input class="pe" type="time" value="${esc(p.end)}"></label><label><input class="pen" type="checkbox" ${p.enabled?"checked":""}> Enabled</label></div>`).join("")}
 $("#add-promo").onclick=()=>{content.promotions.push({id:crypto.randomUUID(),name:"New promotion",message:"",enabled:false,days:[1,2,3,4,5],start:"11:30",end:"19:00"});renderPromos()};
-let autoSaveTimer=null,autoSaving=false;
-function queueMenuAutosave(){clearTimeout(autoSaveTimer);autoSaveTimer=setTimeout(saveMenuAutosave,900)}
-async function saveMenuAutosave(){if(autoSaving)return;autoSaving=true;try{syncAllCards();[content,map]=await Promise.all([api("/api/admin/content",{method:"PUT",body:JSON.stringify(content)}),api("/api/admin/map",{method:"PUT",body:JSON.stringify(map)})]);const el=$("#mapping-state");if(el){el.textContent="Saved automatically";setTimeout(()=>{if(el.textContent==="Saved automatically")el.textContent=""},1600)}}catch(e){const el=$("#mapping-state");if(el)el.textContent=`Auto-save failed: ${e.message}`}finally{autoSaving=false}}
+let autoSaveTimer=null,autoSaving=false,autoSavePending=false;
+function queueMenuAutosave(){autoSavePending=true;clearTimeout(autoSaveTimer);autoSaveTimer=setTimeout(saveMenuAutosave,650)}
+async function saveMenuAutosave(){
+  if(autoSaving){autoSavePending=true;return}
+  autoSaving=true;
+  const el=$("#mapping-state");
+  try{
+    do{
+      autoSavePending=false;
+      syncAllCards();
+      const contentSnapshot=structuredClone(content),mapSnapshot=structuredClone(map);
+      const [savedContent,savedMap]=await Promise.all([
+        api("/api/admin/content",{method:"PUT",body:JSON.stringify(contentSnapshot)}),
+        api("/api/admin/map",{method:"PUT",body:JSON.stringify(mapSnapshot)})
+      ]);
+      if(!autoSavePending){content=savedContent;map=savedMap}
+    }while(autoSavePending);
+    if(el){el.textContent="Saved automatically";setTimeout(()=>{if(el.textContent==="Saved automatically")el.textContent=""},1600)}
+  }catch(e){if(el)el.textContent=`Auto-save failed: ${e.message}`}
+  finally{autoSaving=false;if(autoSavePending)queueMenuAutosave()}
+}
 async function loadPersistenceStatus(){const el=$("#persistence-state");if(!el)return;try{const s=await api("/api/admin/persistence/status");el.innerHTML=s.persistent&&s.writable?`<span class="status available">PERSISTENT</span> Menu data is stored in ${esc(s.dataDir)}. Recovery copies: ${s.historyCount}.`:`<span class="status sold">VOLATILE</span> Menu data can be replaced by a restart or deployment. Attach a Render disk before relying on Menu Builder edits.`}catch(e){el.textContent=e.message}}
 
 async function saveAll(){try{syncAllCards();settings.square.locationId=$("#location").value.trim();settings.theme.adobeFontsUrl=$("#adobe").value.trim();settings.theme.red=$("#red").value;settings.theme.navy=$("#navy").value;settings.theme.cream=$("#cream").value;settings.theme.aqua=$("#aqua").value;settings.display.weekendSurchargeOnlyOnWeekends=$("#weekend").checked;document.querySelectorAll(".promo-row").forEach(el=>{const p=content.promotions[Number(el.dataset.i)];p.name=el.querySelector(".pn").value;p.message=el.querySelector(".pm").value;p.start=el.querySelector(".ps").value;p.end=el.querySelector(".pe").value;p.enabled=el.querySelector(".pen").checked});[settings,content,map]=await Promise.all([api("/api/settings",{method:"PUT",body:JSON.stringify(settings)}),api("/api/admin/content",{method:"PUT",body:JSON.stringify(content)}),api("/api/admin/map",{method:"PUT",body:JSON.stringify(map)})]);$("#save-state").textContent="Saved and published successfully.";setTimeout(()=>$("#save-state").textContent="",3000);renderItems();await loadLiveStatus(true)}catch(e){$("#save-state").textContent=e.message;alert(e.message)}}
@@ -48,7 +66,14 @@ if($("#backup-now"))$("#backup-now").onclick=runBackupNow;if($("#refresh-backups
 if($("#restore-local"))$("#restore-local").onchange=async e=>{const file=e.target.files?.[0];if(!file)return;if(!confirm("Restore this local backup? Current menu data will be replaced."))return;try{const payload=JSON.parse(await file.text());await api("/api/admin/restore-local",{method:"POST",body:JSON.stringify(payload)});[settings,content,map]=await Promise.all([api("/api/settings"),api("/api/admin/content"),api("/api/admin/map")]);fill();renderPromos();renderItems();alert("Backup restored successfully.")}catch(err){alert(err.message)}finally{e.target.value=""}};
 
 
-function fitPreview(){const frame=document.querySelector(".preview-frame"),iframe=frame?.querySelector("iframe");if(!frame||!iframe)return;frame.style.setProperty("--preview-scale",String(Math.min(frame.clientWidth/1920,frame.clientHeight/1080)))}
+function fitPreview(){
+  document.querySelectorAll(".preview-frame").forEach(frame=>{
+    const iframe=frame.querySelector("iframe");
+    if(!iframe)return;
+    const scale=Math.min(frame.clientWidth/1920,frame.clientHeight/1080);
+    frame.style.setProperty("--preview-scale",String(scale));
+  });
+}
 addEventListener("resize",fitPreview,{passive:true});
 function formatLocalBytes(n){if(!n)return"0 B";const u=["B","KB","MB"],i=Math.min(Math.floor(Math.log(n)/Math.log(1024)),2);return`${(n/1024**i).toFixed(i?1:0)} ${u[i]}`}
 async function loadSystemHealth(){try{const s=await api("/api/admin/system-health");const el=$("#mapping-health");if(el)el.innerHTML=s.mapping.status==="healthy"?`<span class="status available">HEALTHY</span> ${s.mapping.mapped}/${s.mapping.total} menu rows mapped.`:`<span class="status warning">ATTENTION</span> ${s.mapping.mapped}/${s.mapping.total} mapped; ${s.mapping.unmapped} unmapped; ${s.mapping.duplicates.length} duplicate mapping(s).`;const b=$("#local-backup-state");if(b)b.innerHTML=s.persistent?`<span class="status available">PERSISTENT</span> ${s.backups.count} backups stored in ${esc(s.dataDir)}.`:`<span class="status sold">VOLATILE</span> DATA_DIR is ${esc(s.dataDir)}.`}catch(e){console.warn(e)}}

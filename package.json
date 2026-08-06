@@ -1,15 +1,19 @@
 {
-  "name": "bhfc-website-v1-1-dual-live-menu",
-  "version": "1.2.0",
+  "name": "bhfc-menu-manager-v13-2-3",
+  "version": "13.2.4",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "check": "node --check server.js"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0"
   }
 }
