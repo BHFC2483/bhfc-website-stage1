@@ -1,8 +1,5 @@
-# BHFC Website v1.3.0 — Sticky Order Header
+# BHFC Website v1.3.1 — Order Link Fix
 
-## Changes
-- Mobile header remains fixed while scrolling.
-- Red Order Online button is always visible on mobile.
-- Header and logo shrink slightly after scrolling.
-- Desktop navigation and working browser compatibility behaviour are unchanged.
-- Order links continue to use Square Online.
+- Updates every Order Online button to https://order.brunswickheadsfishandchippery.com.au
+- Preserves the working sticky mobile header and browser compatibility fixes.
+- Footer version updated to BHFC Website v1.3.1.
