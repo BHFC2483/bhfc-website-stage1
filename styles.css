@@ -251,3 +251,4 @@
   .site-header .brand img{width:86px}
   .mobile-order-pill{padding-inline:14px;font-size:.87rem}
 }
+\n\n/* v1.3.2 — live menus on all browsers and devices */\n.mobile-menu-preview-link,\n.mobile-menu-preview{display:none!important}\n.landscape-menu-frame iframe,\nhtml.chrome-desktop .landscape-menu-frame iframe{display:block!important}\n@media(max-width:900px){\n  .landscape-menu-frame iframe{display:block!important}\n  .live-menu-heading{margin-bottom:12px}\n  .live-menu-heading h2{font-size:clamp(2.35rem,12vw,4rem)}\n  .live-menu-block .menu-actions{margin-top:16px}\n}\n
