@@ -1,0 +1,27 @@
+{
+  "business": {
+    "name": "Brunswick Heads Fish & Chippery",
+    "instagram": "#BRUNSWICKHEADSFISHANDCHIPPERY",
+    "footerCentre": "SEAFOOD ORIGIN: A = AUSTRALIAN | I = IMPORTED | M = MIXED",
+    "footerRight": "10% SURCHARGE ON WEEKENDS",
+    "timezone": "Australia/Sydney",
+    "currency": "AUD"
+  },
+  "theme": {
+    "cream": "#f5eee7",
+    "navy": "#003087",
+    "red": "#e4002b",
+    "aqua": "#72d7d3",
+    "headingFont": "\"cooper-black-std\", \"Cooper Black\", Georgia, serif",
+    "bodyFont": "\"filson-pro\", \"Avenir Next\", Arial, sans-serif",
+    "adobeFontsUrl": "https://use.typekit.net/rlp8byb.css"
+  },
+  "square": {
+    "locationId": "",
+    "environment": "production"
+  },
+  "display": {
+    "weekendSurchargeOnlyOnWeekends": false,
+    "refreshSeconds": 60
+  }
+}

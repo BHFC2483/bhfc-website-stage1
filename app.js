@@ -1,7 +1,3 @@
-// v1.3.0 browser capability marker. Chrome desktop uses a reliable static menu preview; Edge keeps the live embed.
-const ua=navigator.userAgent;
-const isDesktopChrome=/Chrome\//.test(ua)&&!/Edg\//.test(ua)&&!/OPR\//.test(ua)&&!/Mobile/.test(ua);
-if(isDesktopChrome)document.documentElement.classList.add("chrome-desktop");
 const ORDER_URL="https://order.brunswickheadsfishandchippery.com.au";
 document.querySelectorAll("[data-order-link]").forEach(a=>a.href=ORDER_URL);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
